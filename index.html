@@ -517,7 +517,7 @@
             <button type="button" id="12priority" onclick="selectpriority(this)">12月</button>
         </div>
 
-        <div class="label">来店動機</div>
+        <div class="label">気になるお肌のお悩みがありましたら教えてください（複数選択可）</div>
         <div class="demand-buttons">
             <button type="button" id="onedemand" onclick="selectdemand(this)">シミ</button>
             <button type="button" id="twodemand" onclick="selectdemand(this)"> 小シワ</button>
@@ -609,14 +609,14 @@
 
             // フォームデータのチェック
             if (!formData.demandCount) {
-                alert('来店動機をご選択ください。');
+                alert('気になるお肌のお悩みをご選択ください。');
                 return;
             }
 
             // LINEトークにメッセージを送信
             liff.sendMessages([{
                 type: 'text',
-                text: `≪アンケート≫\n【お名前】\n・${formData.message}\n\n【誕生月】\n・${formData.priorityCount}\n\n【お悩みの項目】\n・${formData.demandCount}`
+                text: `≪アンケート≫\n【お名前】\n・${formData.message}\n\n【誕生月】\n・${formData.priorityCount}\n\n【気になるお肌のお悩み】\n・${formData.demandCount}`
             }]).then(() => {
                 /* メッセージ送信成功時の処理 */
                 alert('ご記入ありがとうございます。');
