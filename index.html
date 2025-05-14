@@ -495,29 +495,29 @@
     </div>
 
     <div class="container">
-        <h1>メナード化粧品株式会社巴川代行店<br>アンケートフォーム</h1>
+        <h1>testsalon<br>アンケートフォーム</h1>
         <div class="info-text">以下全て入力後【アンケート送信】ボタンを押してください。</div>
 
         <div class="label">お名前(漢字フルネーム/ふりがな)</div>
-        <textarea id="message2" rows="1" placeholder="入力してください"></textarea> <!-- メッセージ入力フィールド -->
+        <textarea id="message" rows="1" placeholder="入力してください"></textarea> <!-- メッセージ入力フィールド -->
 
         <div class="label">誕生月</div>
         <div class="priority-buttons">
-            <button type="button" id="onepriority" onclick="selectpriority(this)"> 1月</button>
-            <button type="button" id="twopriority" onclick="selectpriority(this)">2月</button>
-            <button type="button" id="threepriority" onclick="selectpriority(this)">3月</button>
-            <button type="button" id="fourpriority" onclick="selectpriority(this)">4月</button>
-            <button type="button" id="fivepriority" onclick="selectpriority(this)">5月</button>
-            <button type="button" id="fivepriority" onclick="selectpriority(this)">6月</button>
-            <button type="button" id="fivepriority" onclick="selectpriority(this)">7月</button>
-            <button type="button" id="fivepriority" onclick="selectpriority(this)">8月</button>
-            <button type="button" id="fivepriority" onclick="selectpriority(this)">9月</button>
-            <button type="button" id="fivepriority" onclick="selectpriority(this)">10月</button>
-            <button type="button" id="fivepriority" onclick="selectpriority(this)">11月</button>
-            <button type="button" id="fivepriority" onclick="selectpriority(this)">12月</button>
+            <button type="button" id="1priority" onclick="selectpriority(this)">1月</button>
+            <button type="button" id="2priority" onclick="selectpriority(this)">2月</button>
+            <button type="button" id="3priority" onclick="selectpriority(this)">3月</button>
+            <button type="button" id="4priority" onclick="selectpriority(this)">4月</button>
+            <button type="button" id="5priority" onclick="selectpriority(this)">5月</button>
+            <button type="button" id="6priority" onclick="selectpriority(this)">6月</button>
+            <button type="button" id="7priority" onclick="selectpriority(this)">7月</button>
+            <button type="button" id="8priority" onclick="selectpriority(this)">8月</button>
+            <button type="button" id="9priority" onclick="selectpriority(this)">9月</button>
+            <button type="button" id="10priority" onclick="selectpriority(this)">10月</button>
+            <button type="button" id="11priority" onclick="selectpriority(this)">11月</button>
+            <button type="button" id="12priority" onclick="selectpriority(this)">12月</button>
         </div>
 
-        <div class="label">気になるお肌のお悩みがありましたら教えてください（複数選択可）</div>
+        <div class="label">来店動機</div>
         <div class="demand-buttons">
             <button type="button" id="onedemand" onclick="selectdemand(this)">シミ</button>
             <button type="button" id="twodemand" onclick="selectdemand(this)"> 小シワ</button>
@@ -526,10 +526,8 @@
             <button type="button" id="fivedemand" onclick="selectdemand(this)">乾燥</button>
             <button type="button" id="sixdemand" onclick="selectdemand(this)">毛穴</button>
             <button type="button" id="sevemdemand" onclick="selectdemand(this)">くすみ</button>
-            <button type="button" id="sevemdemand" onclick="selectdemand(this)">その他</button>
+            <button type="button" id="eightdemand" onclick="selectdemand(this)">その他</button>
         </div>
-
-        <div class="label">お肌・エステで気になることがあれば<br>お気軽にこのLINEにお問い合わせください</div>
 
         <button class="submit-button" onclick="submitForm()" div id="section-message">送信</button>
     </div>
@@ -538,11 +536,6 @@
     <script>
         let priorityCount = '';
         let demandCount = '';
-        let chanceCount = '';
-        let IntroductionCount = '';
-        let deliveryCount = '';
-        let budgetyCount = '';
-
         // LIFF初期化
         document.addEventListener('DOMContentLoaded', function () {
             liff.init({
@@ -591,153 +584,42 @@
             demandCount = selectedDemands;  // 配列として保持
         }
 
-        function selectchance(element) {
-            // 単一選択項目の処理コード
-            const buttons = document.querySelectorAll('.chance-buttons button');
-            buttons.forEach(button => button.classList.remove('active'));
-
-            // 選択されたボタンだけにactiveクラスを追加
-            element.classList.add('active');
-            chanceCount = element.innerText;
-        }
-
-        function selectIntroduction(element) {
-            // 単一選択項目の処理コード
-            const buttons = document.querySelectorAll('.Introduction-buttons button');
-            buttons.forEach(button => button.classList.remove('active'));
-
-            // 選択されたボタンだけにactiveクラスを追加
-            element.classList.add('active');
-            IntroductionCount = element.innerText;
-        }
-
-        function selectdelivery(element) {
-            // 単一選択項目の処理コード
-            const buttons = document.querySelectorAll('.delivery-buttons button');
-            buttons.forEach(button => button.classList.remove('active'));
-
-            // 選択されたボタンだけにactiveクラスを追加
-            element.classList.add('active');
-            deliveryCount = element.innerText;
-        }
-
-        function selectbudgety(element) {
-            // すでに active クラスが付いていれば外し、付いていなければ追加する
-            element.classList.toggle('active');
-
-            // 選択されているすべてのボタンのテキストを取得して配列にする
-            const activeButtons = document.querySelectorAll('.budgety-buttons button.active');
-            const selectedBudgets = Array.from(activeButtons).map(button => button.innerText);
-
-            // 必要であれば、ここで選択された値をどこかに格納
-            budgetyCount = selectedBudgets;  // 配列として保持
-        }
-
-
         function submitForm() {
             const message = document.getElementById('message').value;
-            const message2 = document.getElementById('message2').value;
-            const message3 = document.getElementById('message3').value;
-            const message4 = document.getElementById('message4').value;
-            const message5 = document.getElementById('message5').value;
-            const message7 = document.getElementById('message7').value;
-            const message8 = document.getElementById('message8').value;
             priorityCount: priorityCount;
             demandCount: demandCount;
-            chanceCount: chanceCount;
-            IntroductionCount: IntroductionCount;
-            deliveryCount: deliveryCount;
-            budgetyCount: budgetyCount;
 
             const formData = {
                 message,
-                message2,
-                message3,
-                message4,
-                message5,
-                message7,
-                message8,
                 priorityCount,
                 demandCount,
-                chanceCount,
-                IntroductionCount,
-                deliveryCount,
-                budgetyCount,
             };
 
             // フォームデータのチェック
             if (!formData.message) {
-                alert('ご来店日を入力してください。');
-                return;
-            }
-
-            // フォームデータのチェック
-            if (!formData.message2) {
                 alert('お名前を入力してください。');
                 return;
             }
 
             // フォームデータのチェック
-            if (!formData.message3) {
-                alert('生年月日を入力してください。');
-                return;
-            }
-
-            // フォームデータのチェック
-            if (!formData.message4) {
-                alert('電話番号を入力してください。');
-                return;
-            }
-
-            // フォームデータのチェック
-            if (!formData.message5) {
-                alert('お住まいを入力してください。');
-                return;
-            }
-
-            // フォームデータのチェック
             if (!formData.priorityCount) {
-                alert('ご職業をご選択ください。');
+                alert('誕生月をご選択ください。');
                 return;
             }
 
             // フォームデータのチェック
-            if (!formData.demandCount) {
-                alert('来店動機をご選択ください。');
-                return;
-            }
-
-            // フォームデータのチェック
-            if (!formData.chanceCount) {
-                alert('来店頻度をご選択ください。');
-                return;
-            }
-
-            // フォームデータのチェック
-            if (!formData.IntroductionCount) {
-                alert('過去施術をご選択ください。');
-                return;
-            }
-
-            // フォームデータのチェック
-            if (!formData.deliveryCount) {
-                alert('薬品/ネイルでのアレルギーをご選択ください。');
-                return;
-            }
-
-            // フォームデータのチェック
-            if (!formData.budgetyCount) {
-                alert('重要項目の同意をご選択ください。');
-                return;
-            }
+            //if (!formData.demandCount) {
+            //    alert('来店動機をご選択ください。');
+            //    return;
+            //}
 
             // LINEトークにメッセージを送信
             liff.sendMessages([{
                 type: 'text',
-                text: `≪アンケート≫\n【ご来店日】\n・${formData.message}\n\n【お名前】\n・${formData.message2}\n\n【生年月日】\n・${formData.message3}\n\n【電話番号】\n・${formData.message4}\n\n【お住まい】\n・${formData.message5}\n\n【ご職業】\n・${formData.priorityCount}\n\n【来店動機】\n・${formData.demandCount}\n\n【知人の紹介名】\n・${formData.message7}\n\n【来店頻度】\n・${formData.chanceCount}\n\n【過去施術】\n・${formData.IntroductionCount}\n\n【薬品/ネイルでのアレルギー】\n・${formData.deliveryCount}\n\n【長さ出し左右本数】\n・${formData.message8}\n\n【重要項目の同意】\n・${formData.budgetyCount}`
+                text: `≪アンケート≫\n【お名前】\n・${formData.message}\n\n【誕生月】\n・${formData.priorityCount}\n\n【お悩みの項目】\n・${formData.demandCount}`
             }]).then(() => {
                 /* メッセージ送信成功時の処理 */
-                alert('ご記入ありがとうございます。同意書が表示されますので、ご確認ください。');
+                alert('ご記入ありがとうございます。');
                 /* LIFFウィンドウを閉じる */
                 liff.closeWindow();
             }).catch((err) => {
