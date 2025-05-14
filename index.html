@@ -608,10 +608,10 @@
             }
 
             // フォームデータのチェック
-            //if (!formData.demandCount) {
-            //    alert('来店動機をご選択ください。');
-            //    return;
-            //}
+            if (!formData.demandCount) {
+                alert('来店動機をご選択ください。');
+                return;
+            }
 
             // LINEトークにメッセージを送信
             liff.sendMessages([{
